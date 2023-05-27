@@ -1,0 +1,265 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Kanban API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/lists": {
+      "get": {
+        "description": "Get all lists",
+        "tags": ["Lists"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "lists": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/List"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new list",
+        "tags": ["Lists"],
+        "parameters": [
+          {
+            "name": "list",
+            "in": "body",
+            "description": "List object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/List"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/List"
+            }
+          }
+        }
+      }
+    },
+    "/lists/{listId}": {
+      "put": {
+        "description": "Update a list",
+        "tags": ["Lists"],
+        "parameters": [
+          {
+            "name": "listId",
+            "in": "path",
+            "description": "List ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "list",
+            "in": "body",
+            "description": "List object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/List"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/List"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a list",
+        "tags": ["Lists"],
+        "parameters": [
+          {
+            "name": "listId",
+            "in": "path",
+            "description": "List ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/lists/{listId}/tasks": {
+      "get": {
+        "description": "Get all tasks in a list",
+        "tags": ["Tasks"],
+        "parameters": [
+          {
+            "name": "listId",
+            "in": "path",
+            "description": "List ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tasks": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Task"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new task in a list",
+        "tags": ["Tasks"],
+        "parameters": [
+          {
+            "name": "listId",
+            "in": "path",
+            "description": "List ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "task",
+            "in": "body",
+            "description": "Task object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      }
+    },
+    "/lists/{listId}/tasks/{taskId}": {
+      "put": {
+        "description": "Update a task",
+        "tags": ["Tasks"],
+        "parameters": [
+          {
+            "name": "listId",
+            "in": "path",
+            "description": "List ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "Task ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "moveTo",
+            "in": "query",
+            "description": "Move task to another list",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a task",
+        "tags": ["Tasks"],
+        "parameters": [
+          {
+            "name": "listId",
+            "in": "path",
+            "description": "List ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "Task ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "List": {
+      "type": "object",
+      "properties": {
+        "listId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "tasks": {
+          "type": "string"
+        }
+      }
+    },
+    "Task": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
