@@ -32,3 +32,4 @@ after running the command the API should be avaliable on http://localhost:8000/.
 ## Testing the API with Postman
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/12662097-d4849c2c-25e2-47d0-b6f9-5767e24dd8bc?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D12662097-d4849c2c-25e2-47d0-b6f9-5767e24dd8bc%26entityType%3Dcollection%26workspaceId%3D6f2769ce-fe76-4f0e-815a-208942736aa1#?env%5BNew%20Environment%5D=W3sia2V5IjoiYmFzZVVybCIsInZhbHVlIjoibG9jYWxob3N0OjgwMDAiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoiZGVmYXVsdCIsInNlc3Npb25WYWx1ZSI6ImxvY2FsaG9zdDo4MDAwIiwic2Vzc2lvbkluZGV4IjowfV0=)
 
+if the test doesn't run and give a "Could not send request" try downloading the desktop agent for postman and run with it.
